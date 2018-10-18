@@ -8,18 +8,18 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ```
 
 export APP_NAME=REPLACE_ME
+export ORG=REPLACE_ME
+export DOCKER_REGISTRY=docker-registry.jx.k8s.trunksys.com
+
 export BRANCH_NAME=develop
-export BUILD_NUMBER=11
+export BUILD_NUMBER=1
 export PREVIEW_VERSION=0.0.0-SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER
 export PREVIEW_NAMESPACE=$APP_NAME-develop
 
-export DOCKER_REGISTRY=docker-registry.jx.k8s.trunksys.com
-export JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST=https://docker-registry.jx.k8s.trunksys.com
+export JENKINS_X_DOCKER_REGISTRY_SERVICE_HOST=https://$DOCKER_REGISTRY
 export JENKINS_X_DOCKER_REGISTRY_SERVICE_PORT=443
-export ORG=trunk-studio
 
 export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml
-
 
 cd ./charts/preview
 make build
